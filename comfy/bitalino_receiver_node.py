@@ -2,7 +2,7 @@
 import platform
 import sys
 
-from src.bitalino_receiver import BitalinoReceiver
+from ..src.bitalino_receiver import BitalinoReceiver
 
 class LRBitalinoReceiver:
     def __init__(self):

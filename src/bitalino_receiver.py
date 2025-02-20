@@ -1,5 +1,5 @@
 import platform
-import sys
+import sys, os
 import threading
 import time
 
@@ -24,9 +24,14 @@ if platform.mac_ver()[0] != "":
             print(f"Python version required is ≥ 3.10. Installed is {platform.python_version()}")
             exit()
 
+abs_file_path = os.path.abspath(__file__)
+path_parts = os.path.normpath(abs_file_path).split(os.sep)
+base_path = os.path.join(*path_parts[-4:-1])
 
-path_plux = f"PLUX-API-Python3/{osDic[platform.system()]}"
+path_plux = os.path.join(base_path, "PLUX-API-Python3",f"{osDic[platform.system()]}")
+#print(f'path_plux {path_plux}')
 sys.path.append(path_plux)
+
 import plux
 
 class NewDevice(plux.SignalsDev):
